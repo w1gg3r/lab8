@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Розовая трапеция</title>
+  <style>
+    /* Опциональные стили для центрирования холста на странице */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Элемент canvas, где будет рисоваться трапеция -->
+  <canvas id="myCanvas" width="200" height="200"></canvas>
+
+  <script>
+    // Получаем ссылку на элемент canvas и контекст для рисования
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+    // Рисуем розовую трапецию
+    function draw() {
+      // Очищаем холст
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      
+      context.fillStyle = 'pink';
+
+      context.beginPath();
+
+      context.moveTo(50, 50); 
+      context.lineTo(150, 50); 
+      context.lineTo(120, 150); 
+      context.lineTo(80, 150); 
+
+      context.closePath();
+
+      context.fill();
+    }
+
+    draw();
+  </script>
+</body>
+</html>

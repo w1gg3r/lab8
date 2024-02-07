@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Рисование на холсте</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;">
+    Ваш браузер не поддерживает элемент HTML5 Canvas.
+  </canvas>
+
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var isSun = true;
+
+    function drawScene() {
+      // Рисуем домик
+      ctx.fillStyle = "brown";
+      ctx.fillRect(100, 250, 200, 200);
+      ctx.fillStyle = "red";
+      ctx.beginPath();
+      ctx.moveTo(100, 250);
+      ctx.lineTo(300, 250);
+      ctx.lineTo(200, 150);
+      ctx.fill();
+
+      // Рисуем окно у дома
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(150, 300, 50, 50);
+
+      // Рисуем дерево
+      ctx.fillStyle = "brown";
+      ctx.fillRect(450, 300, 50, 150);
+      ctx.fillStyle = "green";
+      ctx.beginPath();
+      ctx.moveTo(475, 200);
+      ctx.lineTo(425, 350);
+      ctx.lineTo(525, 350);
+      ctx.fill();
+
+      // Проверяем, какое изображение будет отображаться
+      if (isSun) {
+        // Солнце
+        ctx.beginPath();
+        ctx.arc(50, 50, 30, 0, Math.PI * 2);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+      } else {
+        // Луна
+        ctx.beginPath();
+        ctx.arc(50, 50, 30, 0, Math.PI * 2);
+        ctx.fillStyle = "gray";
+        ctx.fill();
+        ctx.fillStyle = "gray";
+        ctx.beginPath();
+        ctx.arc(40, 40, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(60, 60, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(70, 35, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Изменяем изображение по истечении 10 минут
+      isSun = !isSun;
+
+      // Устанавливаем таймаут для обновления сцены
+      setTimeout(drawScene, 10000); // 10 с в миллисекундах
+    }
+
+    // Начинаем отрисовку
+    drawScene();
+  </script>
+</body>
+</html>
